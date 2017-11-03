@@ -19,11 +19,12 @@ The purpose is to find car position in real time by observing landmark positions
 	   thetaf = theta0;
     }
     else{ // yaw_rate != 0
-			// xf = x0 + v/thetadot*[sin(theta0 + thetadot * (dt) -sin(theta0)];
-			// yf = y0 + v/thetadot * [ cos(theta0) - cos(theta0 + thetadot * dt)]
-			// thetaf = theta0 + thetadot * dt
+           xf = x0 + v/thetadot*[sin(theta0 + thetadot * (dt) -sin(theta0)];
+	   yf = y0 + v/thetadot * [ cos(theta0) - cos(theta0 + thetadot * dt)]
+	   thetaf = theta0 + thetadot * dt
     }
     then add the Guassian noise to the predicted data.
+
 # Particle weight update
 For each particle, repeat the following step to update the weights.
 
@@ -43,10 +44,10 @@ the weight of each particle determine the chance to be sampled.
 # Result
 
 The particle filter passed the criteria. the error between predicted position and ground truth is within given allowed range.
-It takes 49.12s to complete 2443 step.
+It takes 49.38s to complete 2443 step.
 Error: 
-x .121
-y .108
+x .123
+y .107
 yaw .004
 
 ![result](./output/particle_filter.png)
