@@ -1,10 +1,12 @@
 
-### Project Introduction
+# Project Introduction
 Robot car has been kidnapped and transported to a new location! Luckily it has a map of this location, a (noisy) GPS estimate of its initial location, and lots of (noisy) sensor and control data.
 
 This project implement a 2 dimensional particle filter in C++. The particle filter will be given a map and some initial localization information (analogous to what a GPS would provide). At each time step, filter will also get observation and control data.
 
-### Solution
+The purpose is to find car position in real time by observing landmark positions through particle filter.
+
+# Solution
 # Particle initialization:
     * initialize total random particle to be 50.
     * use GPS initial location to initial all particle adding the Gussian noise.
@@ -38,7 +40,7 @@ For each particle, repeat the following step to update the weights.
 Now every particle has new weight, now resample same times as the original amount of particles to form new set of particle.
 the weight of each particle determine the chance to be sampled.
 
-### Result
+# Result
 
 The particle filter passed the criteria. the error between predicted position and ground truth is within given allowed range.
 It takes 49.12s to complete 2443 step.
