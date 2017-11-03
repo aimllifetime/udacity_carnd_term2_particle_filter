@@ -8,8 +8,8 @@ The purpose is to find car position in real time by observing landmark positions
 
 # Solution
 # Particle initialization:
-    * initialize total random particle to be 50.
-    * use GPS initial location to initial all particle adding the Gussian noise.
+    * initialize total random particles to be 50.
+    * use GPS initial location to initial all particles and add the Gussian noise to initial positions.
     * Each particle has initial weight of 1.0
 # Prediction:
     Depending on the yaw rate, the particle's new position and direction is calculated as following fomula:
@@ -26,24 +26,24 @@ The purpose is to find car position in real time by observing landmark positions
     then add the Guassian noise to the predicted data.
 
 # Particle weight update
-For each particle, repeat the following step to update the weights.
+For each particle, repeat the following step to update the weight.
 
-* Given the noisey landmark by radar sample, first of all perform the co-ordinate translation from car co-ordinate to map system.
-* for each translated observed landmark, find the closest landmark in the map co-ordinate system  using Euclidean distance between two 2D points
-* calculate the weight for this particle by using multi-variate Gussian Distribution by following fomula for given observed landmark:
+* Given the noisey landmark by radar sample, first of all perform the co-ordinate translation from car co-ordinate to map co-ordinate system.
+* for each translated observed landmark, find the closest landmark in the map co-ordinate system using Euclidean distance between two 2D points
+* calculate the weight for this observed landmark by using multi-variate Gussian Distribution by following fomula :
   ![weight](./output/weight_fomula.png)
   in the fomula, the (x, y) is the translated observed landmark in the map co-ordinate system.
-  ux and uy are position the landmark in map.
+  ux and uy are the landmark position in map.
   sigma_x and sigma_ythe standard deviations
 * multiply all weights for observed landmark.
 
 # Resample
-Now every particle has new weight, now resample same times as the original amount of particles to form new set of particle.
-the weight of each particle determine the chance to be sampled.
+Now every particle has new weight, now resample same number of times as the original amount of particles to form new set of particles.
+the weight of each particle determine the chance to be sampled during resampling.
 
 # Result
 
-The particle filter passed the criteria. the error between predicted position and ground truth is within given allowed range.
+The particle filter passed the criteria. the error between predicted car position and ground truth is within given allowed error range.
 It takes 49.38s to complete 2443 step.
 Error: 
 x .123
@@ -54,11 +54,6 @@ yaw .004
 
 
 ### Running the Code
-This project involves the Term 2 Simulator which can be downloaded [here](https://github.com/udacity/self-driving-car-sim/releases)
-
-This repository includes two files that can be used to set up and intall uWebSocketIO for either Linux or Mac systems. For windows you can use either Docker, VMware, or even Windows 10 Bash on Ubuntu to install uWebSocketIO.
-
-Once the install for uWebSocketIO is complete, the main program can be built and ran by doing the following from the project top directory.
 
 1. mkdir build
 2. cd build
